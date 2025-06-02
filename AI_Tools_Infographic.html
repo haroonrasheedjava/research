@@ -1,0 +1,484 @@
+<!DOCTYPEDOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI-Powered Software Development Ecosystem Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Application Structure Plan: 
+        A single-page, scrollable infographic with distinct sections:
+        1.  Hero/Introduction: Title, brief summary from Exec Summary.
+        2.  Market Overview: Key stats derived from Table 1 (e.g., total tools analyzed, category distribution).
+        3.  AI Tool Landscape: Focus on major tool categories with example tools and target audience distribution.
+        4.  Key Market Trends: Visual representation of the 5 cross-cutting trends.
+        5.  Challenges & Opportunities: Side-by-side summary.
+        6.  Strategic Recommendations & Future Outlook: Concise points.
+        This structure aims to tell a story, starting broad and then detailing key aspects of the AI development ecosystem. Navigation is via scrolling.
+    -->
+    <!-- Visualization & Content Choices:
+        - Hero: Large text, key quote. Goal: Inform. Method: HTML/Tailwind.
+        - Market Overview (Data from Table 1):
+            - Total Tools Analyzed: Single Big Number. Goal: Inform. Method: HTML/Tailwind.
+            - Tools by Category (e.g., Full-stack, Code Assistant): Bar Chart (Chart.js). Goal: Compare. Method: Chart.js (Canvas).
+            - Target Audience Distribution (Coders, Non-coders, Both): Pie Chart (Chart.js). Goal: Compare. Method: Chart.js (Canvas).
+            - Pricing Model Mix (Freemium, Paid, Enterprise): Donut Chart (Chart.js). Goal: Compare. Method: Chart.js (Canvas).
+            - Open Source vs. Proprietary: Pie Chart (Chart.js). Goal: Compare. Method: Chart.js (Canvas).
+        - AI Tool Landscape (Based on Section III):
+            - For each major category (Full-Stack, Code Assistants, Prototyping, Mobile, Enterprise/Specialized): Brief description, selected example tools (HTML cards), and potentially a small donut chart for audience within that category. Goal: Inform/Compare. Method: HTML/Tailwind cards, Chart.js (Canvas).
+        - Key Market Trends (Based on Section IV):
+            - Each trend as a "card" with an icon (Unicode/HTML styled), title, and summary. Goal: Inform. Method: HTML/Tailwind.
+        - Challenges & Opportunities (Based on Section VI):
+            - Two-column layout. Each point with an icon and brief text. Goal: Organize/Inform. Method: HTML/Tailwind columns, Unicode icons.
+        - Strategic Recommendations & Future Outlook (Based on Section VII):
+            - Styled lists for recommendations (Enterprise, Developer) and predictions. Goal: Inform. Method: HTML/Tailwind lists.
+        - NO SVG, NO MERMAID JS. All charts via Chart.js to Canvas. Icons via Unicode or HTML/CSS.
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; color: #1F2937; }
+        .chart-container { position: relative; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; height: 280px; max-height: 350px; }
+        @media (min-width: 768px) { .chart-container { height: 320px; max-height: 400px; } }
+        .section-title { color: #2563EB; }
+        .accent-text { color: #F97316; }
+        .kpi-box { background-color: #E5E7EB; color: #2563EB; }
+        .kpi-value { font-size: 2.5rem; line-height: 1.1; }
+        .kpi-label { font-size: 0.875rem; }
+        .trend-card, .challenge-card, .opportunity-card { background-color: white; border-left-width: 4px; }
+        .trend-icon, .challenge-icon, .opportunity-icon { font-size: 1.75rem; margin-right: 0.75rem; }
+        .nav-sticky { position: sticky; top: 0; background-color: rgba(249, 250, 251, 0.9); z-index: 50; backdrop-filter: blur(8px); }
+        .nav-link { transition: color 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #F97316; }
+        h1, h2, h3 { font-weight: 700; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="nav-sticky shadow-sm py-3 mb-8">
+        <div class="container mx-auto px-6 flex justify-center space-x-4 sm:space-x-8">
+            <a href="#overview" class="nav-link text-sm sm:text-base font-medium text-gray-700">Overview</a>
+            <a href="#landscape" class="nav-link text-sm sm:text-base font-medium text-gray-700">Landscape</a>
+            <a href="#trends" class="nav-link text-sm sm:text-base font-medium text-gray-700">Trends</a>
+            <a href="#challenges" class="nav-link text-sm sm:text-base font-medium text-gray-700">Challenges</a>
+            <a href="#strategy" class="nav-link text-sm sm:text-base font-medium text-gray-700">Strategy</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="py-12 bg-gradient-to-br from-blue-600 to-teal-500 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">The AI-Powered Software Development Ecosystem</h1>
+            <p class="text-lg md:text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto">
+                AI is fundamentally reshaping software creation, enhancing productivity, democratizing development, and streamlining the entire lifecycle.
+            </p>
+        </div>
+    </section>
+
+    <section id="overview" class="py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl section-title text-center mb-4">Market at a Glance</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10 md:mb-12">
+                An analysis of over 40 AI tools reveals a dynamic and rapidly evolving market. This infographic digests key statistics and trends from the "AI-Powered Software Development Ecosystem" report.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="kpi-box p-6 rounded-lg shadow-md text-center">
+                    <div class="kpi-value font-bold">40+</div>
+                    <div class="kpi-label text-gray-700">AI Development Tools Analyzed</div>
+                </div>
+                <div class="kpi-box p-6 rounded-lg shadow-md text-center">
+                    <div class="kpi-value font-bold">~50%</div>
+                    <div class="kpi-label text-gray-700">Targeting Non-Coders or Both</div>
+                </div>
+                <div class="kpi-box p-6 rounded-lg shadow-md text-center">
+                    <div class="kpi-value font-bold">60%+</div>
+                    <div class="kpi-label text-gray-700">Offer Free or Freemium Access</div>
+                </div>
+                 <div class="kpi-box p-6 rounded-lg shadow-md text-center">
+                    <div class="kpi-value font-bold">85%+</div>
+                    <div class="kpi-label text-gray-700">Are Proprietary Solutions</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Tool Distribution by Category</h3>
+                    <div class="chart-container">
+                        <canvas id="toolsByCategoryChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">Full-stack and Code Assistants are prominent categories, followed by specialized Enterprise tools.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Target Audience Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="targetAudienceChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">A significant portion of tools cater to coders, but tools for non-coders and mixed audiences are growing.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Pricing Model Overview</h3>
+                    <div class="chart-container">
+                        <canvas id="pricingModelChart"></canvas>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-3 text-center">Free/Freemium models are common, lowering adoption barriers, alongside paid and enterprise solutions.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Open Source vs. Proprietary</h3>
+                    <div class="chart-container">
+                        <canvas id="openSourceChart"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 text-center">The market is predominantly proprietary, though open-source alternatives offer transparency and customization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="landscape" class="py-12 md:py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl section-title text-center mb-10 md:mb-12">AI Tool Landscape Highlights</h2>
+            <div class="space-y-12">
+                
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Full-Stack App Generators</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Automating end-to-end application creation, from UI to backend, accelerating concept-to-production for diverse user needs.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-blue-700">Factory AI</h4>
+                            <p class="text-sm text-gray-600">For coders: Complex apps, local execution, agent framework.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-blue-700">Heyboss AI</h4>
+                            <p class="text-sm text-gray-600">For non-coders: Creative full-stack builder, production-ready.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-blue-500">
+                            <h4 class="font-semibold text-blue-700">Replit AI</h4>
+                            <p class="text-sm text-gray-600">For coders: AI agent in IDE, assistant modes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Code Assistants & IDE Solutions</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Augmenting developer productivity with AI-powered code generation, completion, debugging, and refactoring directly within IDEs.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-teal-500">
+                            <h4 class="font-semibold text-teal-700">GitHub Copilot</h4>
+                            <p class="text-sm text-gray-600">Code gen, PR automation, bug fixing, GitHub-native.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-teal-500">
+                            <h4 class="font-semibold text-teal-700">Cursor</h4>
+                            <p class="text-sm text-gray-600">AI completion, project-wide context search, VS Code integration.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-teal-500">
+                            <h4 class="font-semibold text-teal-700">Tabnine</h4>
+                            <p class="text-sm text-gray-600">Autocomplete, full gen expansion, multi-LLM support.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">Prototyping & UI/UX Tools</h3>
+                    <p class="text-gray-600 mb-6 max-w-3xl">Bridging design and development by rapidly generating UI mockups and functional front-end code from various inputs.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-orange-500">
+                            <h4 class="font-semibold text-orange-700">v0 (Vercel)</h4>
+                            <p class="text-sm text-gray-600">UI page generation from prompt, Figma integration.</p>
+                        </div>
+                         <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-orange-500">
+                            <h4 class="font-semibold text-orange-700">Stitch (Google)</h4>
+                            <p class="text-sm text-gray-600">AI-assisted UI creation, multivariant design, code output.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg shadow-lg border-l-4 border-orange-500">
+                            <h4 class="font-semibold text-orange-700">Webdraw</h4>
+                            <p class="text-sm text-gray-600">Sketch-to-code UX tool, intuitive UI for non-coders.</p>
+                        </div>
+                    </div>
+                </div>
+                 </div>
+        </div>
+    </section>
+
+    <section id="trends" class="py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl section-title text-center mb-10 md:mb-12">Key Market Trends & Dynamics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="trend-card p-6 rounded-lg shadow-lg border-blue-500">
+                    <div class="flex items-start">
+                        <span class="trend-icon text-blue-500">🤖</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Rise of Autonomous Agents</h3>
+                            <p class="text-sm text-gray-600">AI is evolving from assistants to core agents capable of context understanding, task planning, and multi-step execution, reducing human intervention.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card p-6 rounded-lg shadow-lg border-teal-500">
+                     <div class="flex items-start">
+                        <span class="trend-icon text-teal-500">🛠️</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Democratization via No-Code/Low-Code</h3>
+                            <p class="text-sm text-gray-600">AI empowers non-programmers to build apps using NLP and visual interfaces, expanding the "citizen developer" revolution.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card p-6 rounded-lg shadow-lg border-orange-500">
+                    <div class="flex items-start">
+                        <span class="trend-icon text-orange-500">🔗</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Strategic Tech Player Investments</h3>
+                            <p class="text-sm text-gray-600">Major tech companies (Google, Microsoft, Amazon) are heavily investing in and integrating AI into their ecosystems, driving innovation and lock-in.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card p-6 rounded-lg shadow-lg border-purple-500">
+                     <div class="flex items-start">
+                        <span class="trend-icon text-purple-500">🌐</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Open Source vs. Proprietary</h3>
+                            <p class="text-sm text-gray-600">A mix of proprietary (polished UX, support) and open-source (transparency, customization) tools cater to diverse developer needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card p-6 rounded-lg shadow-lg border-red-500">
+                    <div class="flex items-start">
+                        <span class="trend-icon text-red-500">💰</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Varied Pricing & Accessibility</h3>
+                            <p class="text-sm text-gray-600">Free, freemium, paid, and enterprise models coexist, lowering adoption barriers and catering to different user segments.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="trend-card p-6 rounded-lg shadow-lg border-green-500">
+                     <div class="flex items-start">
+                        <span class="trend-icon text-green-500">🎯</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Hyper-Specialized AI Agents</h3>
+                            <p class="text-sm text-gray-600">AI tools are increasingly focusing on specific, high-value tasks like advanced bug fixing, test generation, and niche anlytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="challenges" class="py-12 md:py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl section-title text-center mb-10 md:mb-12">Challenges & Opportunities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="challenge-card p-6 rounded-lg shadow-lg border-red-500">
+                     <div class="flex items-start">
+                        <span class="challenge-icon text-red-500">🛡️</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Challenges</h3>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>Data privacy, security, and IP rights for AI-processed code.</li>
+                                <li>"Black box" nature of AI, affecting code quality and maintainability.</li>
+                                <li>Integration complexities and ecosystem fragmentation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="opportunity-card p-6 rounded-lg shadow-lg border-green-500">
+                     <div class="flex items-start">
+                        <span class="opportunity-icon text-green-500">💡</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Opportunities</h3>
+                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                <li>Tools with robust privacy, self-hosting, and security features.</li>
+                                <li>Solutions emphasizing transparency, explainability, and code quality.</li>
+                                <li>Focus on interoperability, native IDE integration, and APIs.</li>
+                                 <li>Growth in emerging niches: enhanced security, data analysis, specialized apps.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategy" class="py-12 md:py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl section-title text-center mb-10 md:mb-12">Strategy & Future Outlook</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3"><span class="accent-text">►</span> Recommendations for Enterprises</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-2 pl-4">
+                        <li>Start with AI augmentation in IDEs, then progress to supervised autonomous agents.</li>
+                        <li>Prioritize tools with strong security, governance, and IP protection features.</li>
+                        <li>Invest in training to upskill developers for effective AI collaboration.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3"><span class="accent-text">►</span> Guidance for Developers</h3>
+                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-2 pl-4">
+                        <li>Embrace AI as a collaborative partner to handle routine tasks.</li>
+                        <li>Master prompt engineering for optimal AI-generated outputs.</li>
+                        <li>Stay informed on the dynamic AI tool ecosystem and trends.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-xl">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3 text-center"><span class="accent-text">🔮</span> Future Outlook: Next Wave of Innovation</h3>
+                 <ul class="list-disc list-inside text-sm text-gray-600 space-y-2 md:columns-2 md:gap-x-8">
+                    <li>Hyper-personalized AI agents understanding individual developer styles.</li>
+                    <li>Multi-modal AI development (visual, audio, text to code).</li>
+                    <li>Sophisticated AI for legacy system modernization and refactoring.</li>
+                    <li>Growing emphasis on ethical AI, fairness, and transparency in code generation.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 text-sm text-gray-500 border-t border-gray-200 mt-12">
+        Infographic based on the "AI-Powered Software Development Ecosystem" Report.
+    </footer>
+
+    <script>
+        const reportData = {
+            toolCount: 43, // Approximation from table
+            categories: [
+                { name: "Full-stack App Generator", count: 9, color: "#3B82F6" }, // Blue
+                { name: "Code Assistant", count: 10, color: "#10B981" }, // Green (combined IDE-native and general)
+                { name: "Prototyping Tool", count: 3, color: "#F59E0B" }, // Amber
+                { name: "Mobile App Generator", count: 2, color: "#8B5CF6" }, // Violet
+                { name: "Enterprise & Specialized", count: 19, color: "#EF4444" } // Red (combined various specialized)
+            ],
+            targetAudience: {
+                "Coders": 20, // Approximate
+                "Non-coders": 10, // Approximate
+                "Both": 13 // Approximate
+            },
+            pricingModels: { // Simplified from report for infographic
+                "Free/Freemium": 25, // Approximate
+                "Paid/Subscription": 12, // Approximate
+                "Enterprise/Custom": 6 // Approximate
+            },
+            openSourceStatus: {
+                "Proprietary (No)": 36, // Approximate
+                "Open Source (Yes)": 2,  // Aider, Continue.dev
+                "Partial": 1, // Qodo
+                "Unknown": 4 // If any are unclear
+            }
+        };
+
+        const chartTooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return label;
+            }
+        };
+        
+        const processLabels = (labels) => {
+            return labels.map(label => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    let currentLine = '';
+                    const lines = [];
+                    for (const word of words) {
+                        if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                            lines.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    }
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            });
+        };
+
+        // Chart: Tools by Category
+        const categoryNames = reportData.categories.map(c => c.name);
+        const categoryCounts = reportData.categories.map(c => c.count);
+        const categoryColors = reportData.categories.map(c => c.color);
+
+        new Chart(document.getElementById('toolsByCategoryChart'), {
+            type: 'bar',
+            data: {
+                labels: processLabels(categoryNames),
+                datasets: [{
+                    label: 'Number of Tools',
+                    data: categoryCounts,
+                    backgroundColor: categoryColors,
+                    borderColor: categoryColors.map(color => color.replace(')', ', 0.7)').replace('rgb', 'rgba')), // Slightly darker border
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                scales: { y: { beginAtZero: true, ticks: { autoSkip: false } } },
+                plugins: { legend: { display: false }, tooltip: { callbacks: { title: chartTooltipTitleCallback } } }
+            }
+        });
+
+        // Chart: Target Audience Distribution
+        new Chart(document.getElementById('targetAudienceChart'), {
+            type: 'pie',
+            data: {
+                labels: processLabels(Object.keys(reportData.targetAudience)),
+                datasets: [{
+                    label: 'Target Audience',
+                    data: Object.values(reportData.targetAudience),
+                    backgroundColor: ["#2563EB", "#14B8A6", "#F97316"],
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { title: chartTooltipTitleCallback } } } }
+        });
+
+        // Chart: Pricing Model Overview
+        new Chart(document.getElementById('pricingModelChart'), {
+            type: 'doughnut',
+            data: {
+                labels: processLabels(Object.keys(reportData.pricingModels)),
+                datasets: [{
+                    label: 'Pricing Models',
+                    data: Object.values(reportData.pricingModels),
+                    backgroundColor: ["#3B82F6", "#F59E0B", "#EF4444", "#10B981"],
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { title: chartTooltipTitleCallback } } } }
+        });
+        
+        // Chart: Open Source vs. Proprietary
+        const osLabels = ['Proprietary', 'Open Source', 'Partial/Unknown'];
+        const osData = [
+            reportData.openSourceStatus["Proprietary (No)"], 
+            reportData.openSourceStatus["Open Source (Yes)"],
+            reportData.openSourceStatus["Partial"] + reportData.openSourceStatus["Unknown"]
+        ];
+        new Chart(document.getElementById('openSourceChart'), {
+            type: 'pie',
+            data: {
+                labels: processLabels(osLabels),
+                datasets: [{
+                    label: 'Source Model',
+                    data: osData,
+                    backgroundColor: ["#6B7280", "#14B8A6", "#A5B4FC"],
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { title: chartTooltipTitleCallback } } } }
+        });
+
+        // Sticky Nav Active Link highlighting
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        function updateActiveLink() {
+            let index = sections.length;
+
+            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+            
+            navLinks.forEach((link) => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-link[href="#${sections[index].id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+        updateActiveLink();
+        window.addEventListener('scroll', updateActiveLink);
+
+    </script>
+</body>
+</html>
